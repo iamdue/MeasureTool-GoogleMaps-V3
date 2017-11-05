@@ -25,7 +25,11 @@ export default class MeasureTool {
       showAccumulativeLength: true,
       contextMenu: true,
       tooltip: true,
-      unit: UnitTypeId.METRIC
+      unit: UnitTypeId.METRIC,
+      i18n: {
+        totalDistance: 'Total distance',
+        totalArea: 'Total area'
+      }
     };
     Object.assign(this._options, options);
     this._map = map;
@@ -690,7 +694,7 @@ export default class MeasureTool {
     this._area = area;
     if (area > 0) {
       this._nodeText.select(':last-child')
-        .text(`Total distance: ${this.lengthText}; Total area: ${this.areaText}.`);
+        .text(`${this._options.i18n.totalDistance}: ${this.lengthText}; ${this._options.i18n.totalArea}: ${this.areaText}.`);
     }
   }
 
