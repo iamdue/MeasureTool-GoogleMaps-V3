@@ -31,7 +31,8 @@ export default class MeasureTool {
         totalArea: 'Total area',
         measureDistance: 'Measure distance',
         clearMeasurement: 'Clear measurement'
-      }
+      },
+      colorScheme: ''
     };
     Object.assign(this._options, options);
     this._map = map;
@@ -713,6 +714,8 @@ export default class MeasureTool {
   }
 
   _dispatchMeasureEvent() {
+    var self = this;
+    console.log(self);
     if (!this._started) return;
     if (typeof this._events.get(EVENT_CHANGE) === "function") {
       this._events.get(EVENT_CHANGE)({
