@@ -28,7 +28,9 @@ export default class MeasureTool {
       unit: UnitTypeId.METRIC,
       i18n: {
         totalDistance: 'Total distance',
-        totalArea: 'Total area'
+        totalArea: 'Total area',
+        measureDistance: 'Measure distance',
+        clearMeasurement: 'Clear measurement'
       }
     };
     Object.assign(this._options, options);
@@ -42,8 +44,8 @@ export default class MeasureTool {
   _init() {
     if (this._options.contextMenu) {
       this._contextMenu = new ContextMenu(this._map.getDiv(), { width: 160 });
-      this._startElementNode = this._contextMenu.addItem("Measure distance", true, this.start, this);
-      this._endElementNode = this._contextMenu.addItem("Clear measurement", false, this.end, this);
+      this._startElementNode = this._contextMenu.addItem(this._options.i18n.measureDistance, true, this.start, this);
+      this._endElementNode = this._contextMenu.addItem(this._options.i18n.clearMeasurement, false, this.end, this);
       this._bindToggleContextMenu();
     }
 
